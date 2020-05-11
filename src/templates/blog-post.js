@@ -1,14 +1,20 @@
 import React, { Component } from "react"
 import { graphql } from "gatsby"
 import PropTypes from "prop-types"
+import Layout from "../components/layout"
 
 export class BlogPost extends Component {
   render() {
-    const { title } = this.props.data.contentfulBlog
+    const { title, body } = this.props.data.contentfulBlog
     return (
-      <div>
-        <h1>{title}</h1>
-      </div>
+      <Layout>
+        <div>
+          <h1>{title}</h1>
+          <div
+            dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }}
+          />
+        </div>
+      </Layout>
     )
   }
 }
@@ -24,6 +30,11 @@ export const pageQuery = graphql`
     contentfulBlog(slug: { eq: $slug }) {
       title
       slug
+      body {
+        childMarkdownRemark {
+          html
+        }
+      }
     }
   }
 `
