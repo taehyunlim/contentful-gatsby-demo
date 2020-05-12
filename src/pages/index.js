@@ -6,7 +6,13 @@ import Layout from "../components/layout"
 const BlogPost = ({ node }) => {
   return (
     <li>
-      <Link to={node.slug}>{node.title}</Link>
+      <Link to={node.slug}>
+        {node.title}
+        <div>
+          <img src={node.heroImage.resize.src} />
+        </div>
+        <div>{node.body.childMarkdownRemark.excerpt}</div>
+      </Link>
     </li>
   )
 }
@@ -31,6 +37,16 @@ export const pageQuery = graphql`
         node {
           title
           slug
+          body {
+            childMarkdownRemark {
+              excerpt(pruneLength: 100)
+            }
+          }
+          heroImage {
+            resize(width: 300, height: 300) {
+              src
+            }
+          }
         }
       }
     }
