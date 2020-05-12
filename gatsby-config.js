@@ -16,6 +16,14 @@ module.exports = {
         accessToken: `${process.env.CONTENTFUL_ACCESS_TOKEN}`,
       },
     },
+    `gatsby-plugin-theme-ui`,
+    {
+      resolve: "gatsby-theme-style-guide",
+      options: {
+        // sets path for generated page
+        basePath: "/design-system",
+      },
+    },
     `gatsby-transformer-remark`,
     `gatsby-plugin-react-helmet`,
     {

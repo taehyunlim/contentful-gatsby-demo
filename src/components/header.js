@@ -1,12 +1,18 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import { jsx } from "theme-ui"
 
 const Header = ({ siteTitle }) => (
   <header
     style={{
       background: `rebeccapurple`,
       marginBottom: `1.45rem`,
+    }}
+    sx={{
+      padding: 4,
+      color: "background",
+      backgroundColor: "primary",
     }}
   >
     <div
