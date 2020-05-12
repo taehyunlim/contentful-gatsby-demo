@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import "./index.css"
 
 import Layout from "../components/layout"
 
@@ -20,7 +21,7 @@ const BlogPost = ({ node }) => {
 const IndexPage = ({ data }) => (
   <Layout>
     <h1>Blog Post from Contentful</h1>
-    <ul>
+    <ul className="blog-post">
       {data.allContentfulBlog.edges.map(edge => (
         <BlogPost node={edge.node} />
       ))}
